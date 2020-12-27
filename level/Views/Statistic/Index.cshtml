@@ -1,0 +1,33 @@
+﻿
+<h2>Custom report</h2>
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">#</span>
+    <input type="text" class="form-control" id="autocmplete-category" placeholder="Category" aria-describedby="basic-addon1" style="margin-right:20px">
+    <div class="btn-group">
+        <button class="btn btn-default dropdown-toggle dropdown-toggle-split" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Display mode
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Day</a></li>
+            <li class="disabled"><a href="#">Week</a></li>
+            <li class="disabled"><a href="#">Month</a></li>
+            <li class="disabled"><a href="#">Year</a></li>
+            <li class="disabled"><a href="#">All time</a></li>
+        </ul>
+    </div>
+</div>
+<br />
+
+
+
+<div class="chart-container" style="position: relative; height:40vh; width:40vw">
+    <canvas id="chartReport"></canvas>
+</div>
+
+
+@section scripts {
+    @Styles.Render("~/Content/report")
+    @Scripts.Render("~/bundles/report")
+}
+

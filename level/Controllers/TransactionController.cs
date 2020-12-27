@@ -40,7 +40,7 @@ namespace Level.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TransactionModel transaction = _mapper.Map<TransactionBL, TransactionModel>(_service.Get((int)id));
+            TransactionModel transaction = _mapper.Map<TransactionBL, TransactionModel>(_service.Get(id.Value));
             if (transaction == null)
             {
                 return HttpNotFound();

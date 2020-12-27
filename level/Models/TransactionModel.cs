@@ -11,7 +11,7 @@ namespace Level.Models
         [Required]
         public int Id { get; set; }
         [Required]
-        [Range(9, float.MaxValue, ErrorMessage = "Please enter valid decimal Number")]
+        [Range(0, float.MaxValue, ErrorMessage = "Please enter valid decimal Number")]
         public decimal Value { get; set; }
 
         [Required]
