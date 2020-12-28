@@ -1,0 +1,22 @@
+﻿
+<h1>My custom report</h1>
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1"></span>
+    <input type="text" class="form-control" id="autocomplete-report" placeholder="choose category" aria-describedby="basic-addon1">
+</div>
+<br />
+
+<button type="button" class="btn btn-primary report-btn">Generate report</button>
+
+
+<canvas id="chartReport" width="400" height="400"></canvas>
+
+
+@section scripts {
+@Styles.Render("~/Content/report")
+@Scripts.Render("~/bundles/report")
+}
+
+
+
+
