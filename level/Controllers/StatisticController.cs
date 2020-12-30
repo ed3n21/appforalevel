@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using BL.ModelsBL;
 using BL.Services;
+using level.ExtensionMethods;
 using level.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static level.ExtensionMethods.StatisticExtensions;
 
 namespace level.Controllers
 {
@@ -43,26 +45,9 @@ namespace level.Controllers
         [HttpGet]
         public JsonResult Chart(int categoryId)
         {
-            // TODO: make period of time and counting mode(day/month/...) depends on received json data
-            // retreiving transaction values during last 7 days in order [day7....day1]
-            decimal[] spends = new decimal[7];
-            for (int i = 0; i < 7; i++)
-            {
-                spends[i] = _transactionService.Get().Where(t => t.CategoryId == categoryId).Where(t => t.Date.Day == DateTime.Now.Day - 6 + i).Select(t => t.Value).Sum();
-            }
+            decimal[] spends = _transactionService.Get().GetStatistic(StatisticDateMode.Days, categoryId);
 
             return Json(spends, JsonRequestBehavior.AllowGet);
-        }
-
-        // GET: Statistic/FooTest
-        public decimal FooTest()
-        {
-            decimal[] spends = new decimal[7];
-            for (int i = 0; i < 7; i++)
-            {
-                spends[i] = _transactionService.Get().Where(t => t.CategoryId == 1).Where(t => t.Date.Day == DateTime.Now.Day - 6 + i).Select(t => t.Value).Sum();
-            }
-            return spends[6];
         }
     }
 }

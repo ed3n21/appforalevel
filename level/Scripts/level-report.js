@@ -61,7 +61,6 @@ function initAutocomplete() {
 
 
 function updateChartData(suggestionData) {
-    var result = [];
     $.get("/Statistic/Chart", { categoryId: suggestionData }, function (data) {
         redrawChart(data);
     });
@@ -69,6 +68,15 @@ function updateChartData(suggestionData) {
 
 
 function redrawChart(chartData) {
+    let options = { weekday: 'long' };
+    var chartLabels = [];
+    for (var i = 0; i < 7; i++) {
+        let date = new Date(Date.now());
+        date.setDate(date.getDate() - 6 + i);
+        chartLabels[i] = new Intl.DateTimeFormat('en-US', options).format(date);
+    }
+
+    reportChart.data.labels = chartLabels;
     reportChart.data.datasets[0].data = chartData;
     reportChart.update();
 }
