@@ -13,7 +13,7 @@ function initChart() {
     reportChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['TODO', 'TODO', 'TODO', 'TODO', 'TODO', 'Yesterday', 'Today'],
+            labels: ['Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
             datasets: [{
                 label: '# of Votes',
                 data: [0, 0, 0, 0, 0, 0, 0],
