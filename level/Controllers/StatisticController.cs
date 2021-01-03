@@ -1,4 +1,5 @@
-﻿using level.Models;
+﻿using level.Filters;
+using level.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,12 @@ using System.Web.Mvc;
 
 namespace level.Controllers
 {
+    [MyAuthorize]
+    [Exception]
     public class StatisticController : Controller
     {
         // GET: Statistic
+     
         public ActionResult Index()
         {
             return View();

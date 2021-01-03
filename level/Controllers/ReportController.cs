@@ -9,6 +9,7 @@ using System.Web.Mvc;
 namespace level.Controllers
 {
     [Exception]
+    [MyAuthorize]
     public class ReportController : ApiController
     {
         [System.Web.Http.HttpGet]
