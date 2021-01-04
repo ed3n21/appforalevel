@@ -13,6 +13,7 @@ using Level.Models;
 
 namespace Level.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _service;

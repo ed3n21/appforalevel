@@ -18,10 +18,19 @@ namespace Level.Models
         }
     }
 
+    public class ExpenditureRole : IdentityRole {
+
+        public ExpenditureRole() { }
+
+        public string Description { get; set; }
+
+        public string TestDescription { get; set; }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Expenditure", throwIfV1Schema: false)
         {
         }
 

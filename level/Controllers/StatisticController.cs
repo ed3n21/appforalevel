@@ -9,6 +9,7 @@ using System.Web.Mvc;
 namespace level.Controllers
 {
     [MyAuthorize]
+    [Authorize(Roles ="user, admin")]
     [Exception]
     public class StatisticController : Controller
     {

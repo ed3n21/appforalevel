@@ -53,11 +53,11 @@ namespace Level
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequiredLength = 4,
+                //RequireNonLetterOrDigit = true,
+                //RequireDigit = true,
+                //RequireLowercase = true,
+                //RequireUppercase = true,
             };
 
             // Configure user lockout defaults
@@ -104,6 +104,18 @@ namespace Level
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+
+    public class ApplicationRoleManager : RoleManager<ExpenditureRole> {
+        public ApplicationRoleManager(RoleStore<ExpenditureRole> store)
+                : base(store)
+        { }
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options,
+                                                IOwinContext context)
+        {
+            return new ApplicationRoleManager(new
+                    RoleStore<ExpenditureRole>(context.Get<ApplicationDbContext>()));
         }
     }
 }

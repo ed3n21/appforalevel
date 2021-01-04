@@ -13,6 +13,7 @@ using Level.Models;
 
 namespace Level.Controllers
 {
+    [Authorize(Roles = "user, admin")]
     public class TransactionController : Controller
     {
         private readonly ITransactionService _service;
