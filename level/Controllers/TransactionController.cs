@@ -10,6 +10,7 @@ using AutoMapper;
 using BL.ModelsBL;
 using BL.Services;
 using Level.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Level.Controllers
 {
@@ -30,7 +31,8 @@ namespace Level.Controllers
         public ActionResult Index()
         {
             var transactions = _mapper.Map<IEnumerable<TransactionBL>, IEnumerable<TransactionModel>>(_service.Get("Category"));
-
+            var userId = User.Identity.GetUserId();
+            transactions.Where(x => x.UserId == userId);
             return View(transactions);
         }
 
@@ -70,6 +72,8 @@ namespace Level.Controllers
                 _service.Create(_mapper.Map<TransactionBL>(transaction));
                 return RedirectToAction("Index");
             }
+
+            transaction.UserId = User.Identity.GetUserId();
 
             ViewBag.categories = new SelectList(_categoryService.Get(), "Id", "Title");
             return View(transaction);

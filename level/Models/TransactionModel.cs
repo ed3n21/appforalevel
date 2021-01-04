@@ -28,6 +28,8 @@ namespace Level.Models
         public int CategoryId { get; set; }
         public CategoryModel Category { get; set; }
 
+        public string UserId { get; set; }
+
         //public DateTime CreatedDate { get; set; }
         //public DateTime UpdateDate { get; set; }
     }
